@@ -14,7 +14,7 @@ func reverse(n int) {
 	n++
 	reverse(n)
 
-	fmt.Println(s[n-1])
+	fmt.Print(string(s[n-1]))
 }
 
 func main() {
