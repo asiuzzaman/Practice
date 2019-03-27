@@ -26,19 +26,32 @@ func main() {
 	for i := 0; i < N; i++ {
 		fmt.Scanln(&niwi[i].ni)
 		fmt.Scanln(&niwi[i].wi)
-		//fmt.Println(niwi[i].ni, " ", niwi[i].wi)
-
 	}
 
 	mysort(niwi)
 
+	if niwi[0].wi > K {
+		fmt.Println("-1")
+		return
+	}
+
 	var temp = 0
-	for i := 0; i < N-1; i++ {
+	store := []int{}
+
+	for i := 0; i < N; i++ {
 		temp = temp + niwi[i].wi
 		if temp <= K {
-			fmt.Print(niwi[i].ni, ",")
+			store = append(store, niwi[i].ni)
+		} else {
+			break
 		}
+
 	}
-	fmt.Println(niwi[N-1].ni)
+	sort.Ints(store)
+
+	fmt.Print(store[0])
+	for i := 1; i < N; i++ {
+		fmt.Print(",", store[i])
+	}
 
 }
