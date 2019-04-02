@@ -5,36 +5,23 @@ import (
 	"fmt"
 )
 
-type student struct {
-	name string
-	age  int
-}
-
-func addStudent(s student) error {
-
-	db := make(map[string]student)
-
-	if s.age > 30 {
-		return errors.New("Student is too Old")
-
+func f1(arg int) (int, error) {
+	if arg == 42 {
+		return -1, errors.New("Cannot work with 42")
 	}
-	db[s.name] = s
-	fmt.Println(db)
-	return nil
+
+	return arg + 3, nil
 }
 
 func main() {
-	tom := student{name: "Tom", age: 45}
-	//jerry := student{name: "Jerry", age: 10}
 
-	err := addStudent(tom)
+	A := []int{7, 55, 89, 1, 42}
 
-	fmt.Println("we got an err " + err.Error())
-
-	//addStudent(jerry)
-
-	//fmt.Println(db["Tom"])
-	// err := addStudent(tom)
-	// fmt.Println("We got an error " + err.Error())
-
+	for _, i := range A {
+		if r, e := f1(i); e != nil {
+			fmt.Println("f1 failed:", e)
+		} else {
+			fmt.Println("f1 worked:", r)
+		}
+	}
 }
