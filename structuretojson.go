@@ -24,7 +24,7 @@ func main() {
 		Created: time.Now(),
 	}
 	var jsonData []byte
-	jsonData, err := json.Marshal(basket)
+	jsonData, err := json.MarshalIndent(basket, "", "   ")
 	if err != nil {
 		log.Println(err)
 	}
